@@ -1,0 +1,151 @@
+package package1;
+
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GridLayout;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+
+import package1.game.ChoiceHandler;
+
+public class UI {
+	
+	JFrame window;
+	JPanel titleNamePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel;
+	JLabel titleNameLabel, dayLabel, dayLabelName, weaponLabel, weaponLabelName;
+	JButton startButton, choice1, choice2, choice3, choice4;
+	JTextArea mainTextArea;
+	Font titleFont = new Font("DoctorGlitch", Font.PLAIN, 62);
+	Font normalFont = new Font("Times New Roman", Font.PLAIN, 25);
+	Font captionFont = new Font("Times New Roman", Font.PLAIN, 20);
+	
+	public void creatUI(ChoiceHandler cHandler){
+		
+		//Window 
+		window = new JFrame();
+		window.setSize(800, 600);  //Size of the window
+		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		window.getContentPane().setBackground(Color.black);
+		window.setLayout(null); //disables default layout (allows to create custom layout
+
+		
+		//Title Screen
+		titleNamePanel = new JPanel();
+		titleNamePanel.setBounds(100, 100, 600, 150);
+		titleNamePanel.setBackground(Color.black);
+		
+		titleNameLabel = new JLabel("Expectations");
+		titleNameLabel.setForeground(Color.white);
+		titleNameLabel.setFont(titleFont);
+		titleNamePanel.add(titleNameLabel);
+		
+		startButtonPanel = new JPanel();
+		startButtonPanel.setBounds(300, 400, 200, 100);
+		startButtonPanel.setBackground(Color.black);
+		
+		startButton = new JButton("Start Game");
+		startButton.setBackground(Color.black);
+		startButton.setForeground(Color.white);
+		startButton.setFont(normalFont);
+		startButton.setFocusPainted(false);
+		startButton.addActionListener(cHandler);
+		startButton.setActionCommand("Start");
+		startButtonPanel.add(startButton);
+		
+		window.add(titleNamePanel);
+		window.add(startButtonPanel);
+		
+		//Game Screen
+		
+		mainTextPanel = new JPanel();
+		mainTextPanel.setBounds(100, 100, 600, 250);
+		mainTextPanel.setBackground(Color.black);
+		
+		mainTextArea = new JTextArea();
+		mainTextArea.setBounds(100, 100, 600, 250);
+		mainTextArea.setBackground(Color.black);
+		mainTextArea.setForeground(Color.white);
+		mainTextArea.setFont(normalFont);
+		mainTextArea.setLineWrap(true);	
+                mainTextArea.setWrapStyleWord(true);
+		mainTextPanel.add(mainTextArea);
+		
+		choiceButtonPanel = new JPanel();
+		choiceButtonPanel.setBounds(250, 350, 300, 150);
+		choiceButtonPanel.setBackground(Color.blue);
+		choiceButtonPanel.setLayout(new GridLayout (4,1));
+
+		
+		choice1 = new JButton("Choice 1");
+		choice1.setBackground(Color.black);
+		choice1.setForeground(Color.white);
+		choice1.setFont(captionFont);
+		choice1.setFocusPainted(false);
+		choice1.addActionListener(cHandler);
+		choice1.setActionCommand("c1");
+		choiceButtonPanel.add(choice1);			
+		
+		choice2 = new JButton("Choice 2");
+		choice2.setBackground(Color.black);
+		choice2.setForeground(Color.white);
+		choice2.setFont(captionFont);
+		choice2.setFocusPainted(false);
+		choice2.addActionListener(cHandler);
+		choice2.setActionCommand("c2");
+		choiceButtonPanel.add(choice2);
+		
+		choice3 = new JButton("Choice 3");
+		choice3.setBackground(Color.black);
+		choice3.setForeground(Color.white);
+		choice3.setFont(captionFont);
+		choice3.setFocusPainted(false);
+		choice3.addActionListener(cHandler);
+		choice3.setActionCommand("c3");
+		choiceButtonPanel.add(choice3);
+		
+		choice4= new JButton("Choice 4");
+		choice4.setBackground(Color.black);
+		choice4.setForeground(Color.white);
+		choice4.setFont(captionFont);
+		choice4.setFocusPainted(false);
+		choice4.addActionListener(cHandler);
+		choice4.setActionCommand("c4");
+		choiceButtonPanel.add(choice4);
+		
+		playerPanel = new JPanel();
+		playerPanel.setBounds(100, 15, 600, 50);
+		playerPanel.setBackground(Color.black);
+		playerPanel.setLayout(new GridLayout (1,8));
+		
+		dayLabel = new JLabel("Day :");
+		dayLabel.setFont(normalFont);
+		dayLabel.setForeground(Color.white);
+		playerPanel.add(dayLabel);
+                
+                dayLabelName= new JLabel ();
+                dayLabelName.setFont(normalFont);
+		dayLabelName.setForeground(Color.white);
+		playerPanel.add(dayLabelName);
+               
+		weaponLabel = new JLabel("Weapon :");
+		weaponLabel.setFont(normalFont);
+		weaponLabel.setForeground(Color.white);
+		playerPanel.add(weaponLabel);
+		
+		weaponLabelName = new JLabel();
+		weaponLabelName.setFont(normalFont);
+		weaponLabelName.setForeground(Color.white);
+		playerPanel.add(weaponLabelName);
+               
+		window.add(mainTextPanel);
+		window.add(choiceButtonPanel);
+		window.add(playerPanel);
+		
+		window.setVisible(true);
+	}
+
+}
